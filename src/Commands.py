@@ -4,6 +4,7 @@ from datetime import datetime, timedelta
 from src import nHentai, UrlHandler, EmbedFactory
 import rule34
 import random
+from jikanpy import Jikan
 
 IMAGES_BASE_PATH = "C:\\Users\\Zachary\\Desktop\\amadeus\\data\\forgotten_images\\"
 
@@ -17,6 +18,8 @@ NON_NSFW_WARNING = "i ain't sending something nsfw in a non nsfw channel"
 
 r_bot = None
 r34_bot = None
+
+jikan = Jikan()
 
 
 async def general(message, bot):
@@ -267,6 +270,20 @@ async def forgotten_emote(message, bot):
         await bot.send("Unknown forgotten image", message.channel)
 
 
+async def anime_search(message, bot):
+
+    search_query = " ".join(message.content.split(" ")[1:])
+
+    results = jikan.search('anime', search_query)['results']
+
+    titles = [x['title'] for x in results]
+    urls = [x['url'] for x in results]
+
+    embed = EmbedFactory.MAL_search_result(titles, urls)
+
+    await bot.send("", message.channel, embed=embed)
+
+
 def create_r_bot():
     global r_bot
 
@@ -295,7 +312,8 @@ command_list = {
     'r': random_nhentai,
     's': nhentai_search,
     '34': rule34_search,
-    'f': forgotten_emote
+    'f': forgotten_emote,
+    'search': anime_search
 }
 
 default_command = unknown_command

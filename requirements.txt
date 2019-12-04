@@ -1,3 +1,4 @@
 discord==1.0.1
 requests==2.22.0
 rule34==1.5.2
+jikanpy==3.4.2

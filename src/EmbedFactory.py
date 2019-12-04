@@ -148,12 +148,31 @@ def rule34_image(tags, image_url, title):
     embed = discord.Embed()
     embed.colour = 11199907
 
-    embed.set_author(name=str(title))
+    embed.title = str(title)
     embed.set_image(url=image_url)
 
     tag_string = list_maker(tags, 2048)[0]
     if tag_string:
         embed.add_field(name="Tags", value=tag_string)
+
+    return embed
+
+
+def MAL_search_result(names, urls):
+
+    fancy_names = ["[" + i + "](" + j + ")\n" for i, j in zip(names, urls)]
+
+    ret, left = list_maker(fancy_names, 2043)
+
+    if left != 0:
+        ret += "+" + str(left) + " more"
+
+    embed = discord.Embed()
+    embed.colour = 3035554
+
+    embed.description = ret
+
+    embed.title = "Mal search results"
 
     return embed
 
