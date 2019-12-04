@@ -1,6 +1,7 @@
 import discord
 import json
 import time
+import os
 
 
 def today():
