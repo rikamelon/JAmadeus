@@ -1,4 +1,6 @@
-data/config.*
+data/config.json
+
+test/
 
 .idea/
 

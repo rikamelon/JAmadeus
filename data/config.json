@@ -6,9 +6,12 @@
     "secret-id": "B8xD-d8fmBqGwQAvVnrbGqEkUx8"
   },
   "discord": {
-    "token": "NTg3NjUyNTg4MDE5OTA4NjI5.XQAvng.7zkxeQVdhqikZX6MKob3PA95SHY"
+    "token": "NTg3NjUyNTg4MDE5OTA4NjI5.XedJlA.C12in2q8BY63AxPegD7oPV7G0Ok"
   },
   "logging": {
     "file": "out.log"
+  },
+  "channels": {
+    "birthday": 643912735008096274
   }
 }

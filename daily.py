@@ -3,51 +3,39 @@ import json
 import time
 
 
-target_channel = 651552578223734795
+def today():
+    return time.strftime("%m").zfill(2) + time.strftime("%d").zfill(2)
 
 
-def todays_birthdays():
+def birthdays(date):
 
-    today = time.strftime("%m").zfill(2) + time.strftime("%d").zfill(2)
+    base_data = [x.strip() for x in open("data/birthdays.txt", encoding="utf-8").readlines()]
 
-    f = [x.strip() for x in open("data/birthdays.txt", encoding="utf-8").readlines()]
+    base_data = base_data[base_data.index("<start " + date + ">") + 2:]
+    base_data = base_data[:base_data.index("<end>")]
 
-    f = f[f.index("<start " + today + ">") + 1:]
-
-    f = f[:f.index("<end>")]
-
-    f.pop(0)
-
-    h = []
-
-    for i in range(0, len(f)//2, 2):
-
-        h.append(f[i] + " - " + f[i+1])
-
-    return h
-
-
+    return [base_data[i] + " - " + base_data[i+1] for i in range(0, len(base_data)//2, 2)]
 
 
 class SimpleClient(discord.Client):
 
     async def on_ready(self):
-        print("uuauwelfk")
+        print("Daily Update Initialization")
 
-        channel = self.get_channel(651552578223734795)
+        channel = self.get_channel(target_channel)
 
         await channel.send("Happy birthday to:")
-
-        for i in todays_birthdays():
-
-            await channel.send(i)
+        for i in birthdays(today()):
+            await channel.send("-- " + i)
 
         quit(21)
 
 
-with open('data\\config.json') as json_data_file:
+with open('data/config.json') as json_data_file:
     data = json.load(json_data_file)
     token = data['discord']['token']
+
+target_channel = data['channels']['birthday']
 
 a = SimpleClient()
 a.run(token)
