@@ -12,7 +12,7 @@ class Client(discord.Client):
         print('Logged on as {0}!'.format(self.user))
         Commands.create_r_bot()
         print('Created Reddit bot!')
-        Commands.create_r34_bot(asyncio.get_running_loop())
+        Commands.create_r34_bot(asyncio.get_event_loop())
         print('Created r34 bot')
         self.update_subs()
         print('Retrieved substitutions')
