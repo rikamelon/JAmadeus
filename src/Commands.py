@@ -284,6 +284,23 @@ async def anime_search(message, bot):
     await bot.send("", message.channel, embed=embed)
 
 
+async def first_anime(message, bot):
+    search_query = " ".join(message.content.split(" ")[1:])
+
+    result = jikan.search('anime', search_query)['results'][0]
+
+    title = result['title']
+    link = result['url']
+    image_url = result['image_url']
+    synopsis = result['synopsis']
+
+    embed = EmbedFactory.MAL_single_anime(title, link, image_url, synopsis)
+
+    await bot.send("", message.channel, embed=embed)
+
+
+
+
 def create_r_bot():
     global r_bot
 
@@ -313,7 +330,8 @@ command_list = {
     's': nhentai_search,
     '34': rule34_search,
     'f': forgotten_emote,
-    'search': anime_search
+    'search': anime_search,
+    'anime': first_anime,
 }
 
 default_command = unknown_command

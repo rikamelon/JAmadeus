@@ -4,8 +4,8 @@ import discord
 def reddit_default(data):
 
     embed = discord.Embed()
-    embed.set_author(name=data['title'], url="https://www.reddit.com" + data['permalink'])
-    embed.title = "Link to thread"
+    embed.set_author(name="Link to thread", url="https://www.reddit.com" + data['permalink'])
+    embed.title = data['title']
     embed.url = "https://www.reddit.com" + data['permalink']
     embed.set_footer(text="by u/" + data['author'])
     embed.colour = 16733952
@@ -173,6 +173,22 @@ def MAL_search_result(names, urls):
     embed.description = ret
 
     embed.title = "Mal search results"
+
+    return embed
+
+
+def MAL_single_anime(name, url, image_url, synopsis):
+
+    embed = discord.Embed()
+    embed.colour = 3035554
+
+    embed.title = name
+    embed.set_author(name="Link to MAL", url=url)
+    embed.url = url
+
+    embed.description = synopsis
+
+    embed.set_thumbnail(url=image_url)
 
     return embed
 
