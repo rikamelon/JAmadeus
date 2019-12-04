@@ -1,0 +1,14 @@
+{
+  "reddit": {
+    "username": "iamawesomeuknow",
+    "password": "zacharyweaver1",
+    "client-id": "QDQ8rwZXajLrwg",
+    "secret-id": "B8xD-d8fmBqGwQAvVnrbGqEkUx8"
+  },
+  "discord": {
+    "token": "NTg3NjUyNTg4MDE5OTA4NjI5.XQAvng.7zkxeQVdhqikZX6MKob3PA95SHY"
+  },
+  "logging": {
+    "file": "out.log"
+  }
+}
