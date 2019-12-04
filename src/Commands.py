@@ -247,6 +247,10 @@ async def rule34_search(message, bot):
     except ValueError:
 
         links = await r34_bot.getImageURLS(tags)
+
+        if not links:
+            await bot.send("No posts found.", message.channel)
+
         embed = EmbedFactory.rule34_image([], random.choice(links), "Random result for " + tags)
 
         await bot.send("", message.channel, embed=embed)
