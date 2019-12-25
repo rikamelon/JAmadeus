@@ -15,7 +15,7 @@ def birthdays(date):
     base_data = base_data[base_data.index("<start " + date + ">") + 2:]
     base_data = base_data[:base_data.index("<end>")]
 
-    return [base_data[i] + " - " + base_data[i+1] for i in range(0, len(base_data)//2, 2)]
+    return [base_data[i] + " - " + base_data[i+1] for i in range(0, len(base_data), 2)]
 
 
 class SimpleClient(discord.Client):
