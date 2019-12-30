@@ -33,6 +33,7 @@ class Client(discord.Client):
         self.substitutions.extend(Substitutions.nullpo())
         self.substitutions.extend(Substitutions.cyanide())
         self.substitutions.extend(Substitutions.thanks_bot())
+        self.substitutions.extend(Substitutions.bad_bot())
 
     async def send(self, message, channel, file=None, filename=None, embed=None):
 

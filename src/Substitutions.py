@@ -220,4 +220,10 @@ def cyanide():
 
 
 def thanks_bot():
-    return [lambda x: re.sub("^.*thanks bot.*", "<:thumb:595365230666711056>", x, flags=re.I | re.M)]
+    return [lambda x: re.sub("^.*thanks bot.*", "<:thumb:595365230666711056>", x, flags=re.I | re.M),
+            lambda x: re.sub("^.*good bot.*", "<:thumb:595365230666711056>", x, flags=re.I | re.M)]
+
+
+def bad_bot():
+    return [lambda x: re.sub("^.*stupid bot.*", "<:aqua:586301642597728263>", x, flags=re.I | re.M),
+            lambda x: re.sub("^.*bad bot.*", "<:aqua:586301642597728263>", x, flags=re.I | re.M)]
