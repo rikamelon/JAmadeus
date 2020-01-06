@@ -325,6 +325,11 @@ async def random_quote(message, bot):
     await bot.send(random.choice(quotes), message.channel)
 
 
+async def all_quotes(message, bot):
+
+    await bot.send("Quotes",  message.channel, file=QUOTES_PATH, filename="quotes.txt")
+
+
 def create_r_bot():
     global r_bot
 
@@ -357,7 +362,8 @@ command_list = {
     'search': anime_search,
     'anime': first_anime,
     'addquote': add_quote,
-    'quote': random_quote
+    'quote': random_quote,
+    'quotes': all_quotes,
 }
 
 default_command = unknown_command
