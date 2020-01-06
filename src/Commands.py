@@ -318,7 +318,7 @@ async def add_quote(message, bot):
 
         new_quote = '"' + quote_message.content + '" - ' + quote_message.author.mention
 
-    with open(QUOTES_PATH, 'a') as file:
+    with open(QUOTES_PATH, 'a', encoding="utf-8") as file:
         file.write("\n")
         file.write(new_quote)
 
