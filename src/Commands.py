@@ -335,9 +335,17 @@ async def get_quote(message, bot):
 
         try:
             quote_index = int(quote_index)
+            # For the non programmers who don't use zero based index
+            if quote_index > 0:
+                quote_index -= 1
+            elif quote_index == 0:
+                raise IndexError
+
             quote = open(QUOTES_PATH).readlines()[quote_index]
         except ValueError:
             quote = random.choice(open(QUOTES_PATH).readlines())
+        except IndexError:
+            quote = "I don't know that quote (but now is a good time to make it)"
 
     await bot.send(quote, message.channel)
 
