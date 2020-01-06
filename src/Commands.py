@@ -331,6 +331,8 @@ async def get_quote(message, bot):
 
     quote = "Something fucked up. Let <@234387706463911939> know."
 
+    file = open(QUOTES_PATH, encoding="utf-8")
+
     if quote_index != "":
 
         try:
@@ -341,11 +343,13 @@ async def get_quote(message, bot):
             elif quote_index == 0:
                 raise IndexError
 
-            quote = open(QUOTES_PATH).readlines()[quote_index]
-        except ValueError:
-            quote = random.choice(open(QUOTES_PATH).readlines())
-        except IndexError:
-            quote = "I don't know that quote (but now is a good time to make it)"
+            quote = file.readlines()[quote_index]
+
+        except ValueError or IndexError:
+            quote = "I don't know that quote."
+
+    else:
+        quote = random.choice(file.readlines())
 
     await bot.send(quote, message.channel)
 
