@@ -29,6 +29,8 @@ class SimpleClient(discord.Client):
         for i in birthdays(today()):
             await channel.send("-- " + i)
 
+        await channel.send("Happy birthday to these fine folks")
+
         quit(21)
 
 

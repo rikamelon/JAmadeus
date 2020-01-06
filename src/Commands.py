@@ -6,7 +6,11 @@ import rule34
 import random
 from jikanpy import Jikan
 
-IMAGES_BASE_PATH = "C:\\Users\\Zachary\\Desktop\\amadeus\\data\\forgotten_images\\"
+with open('data/config.json') as json_data_file:
+    data = json.load(json_data_file)
+
+IMAGES_BASE_PATH = "data/forgotten_images"
+QUOTES_PATH = "data/quotes.txt"
 
 FORGOTTEN_IMAGES = {
 
@@ -303,6 +307,22 @@ async def first_anime(message, bot):
     await bot.send("", message.channel, embed=embed)
 
 
+async def add_quote(message, bot):
+
+    new_quote = " ".join(message.content.split(" ")[1:])
+
+    with open(QUOTES_PATH, 'a') as file:
+        file.write(new_quote)
+        file.write("\n")
+
+    await bot.send("Quote \""+ new_quote + "\" added", message.channel)
+
+
+async def random_quote(message, bot):
+
+    quotes = open(QUOTES_PATH).readlines()
+
+    await bot.send(random.choice(quotes), message.channel)
 
 
 def create_r_bot():
@@ -336,6 +356,8 @@ command_list = {
     'f': forgotten_emote,
     'search': anime_search,
     'anime': first_anime,
+    'addquote': add_quote,
+    'quote': random_quote
 }
 
 default_command = unknown_command

@@ -1,5 +1,6 @@
 *.json
 *.bat
+quotes.txt
 
 test/
 
