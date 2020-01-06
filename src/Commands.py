@@ -312,8 +312,8 @@ async def add_quote(message, bot):
     new_quote = " ".join(message.content.split(" ")[1:])
 
     with open(QUOTES_PATH, 'a') as file:
-        file.write(new_quote)
         file.write("\n")
+        file.write(new_quote)
 
     await bot.send("Quote \""+ new_quote + "\" added", message.channel)
 
