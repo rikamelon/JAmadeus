@@ -325,11 +325,21 @@ async def add_quote(message, bot):
     await bot.send("Quote *"+ new_quote + "* added", message.channel)
 
 
-async def random_quote(message, bot):
+async def get_quote(message, bot):
 
-    quotes = open(QUOTES_PATH).readlines()
+    quote_index = " ".join(message.content.split(" ")[1:])
 
-    await bot.send(random.choice(quotes), message.channel)
+    quote = "Something fucked up. Let <@234387706463911939> know."
+
+    if quote_index != "":
+
+        try:
+            quote_index = int(quote_index)
+            quote = open(QUOTES_PATH).readlines()[quote_index]
+        except ValueError:
+            quote = random.choice(open(QUOTES_PATH).readlines())
+
+    await bot.send(quote, message.channel)
 
 
 async def all_quotes(message, bot):
@@ -369,7 +379,7 @@ command_list = {
     'search': anime_search,
     'anime': first_anime,
     'addquote': add_quote,
-    'quote': random_quote,
+    'quote': get_quote,
     'quotes': all_quotes,
 }
 
