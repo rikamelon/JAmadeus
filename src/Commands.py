@@ -311,11 +311,18 @@ async def add_quote(message, bot):
 
     new_quote = " ".join(message.content.split(" ")[1:])
 
+    # Get the last message in the channel and use that as our quote
+    if new_quote == "":
+
+        quote_message = (await message.channel.history(limit=1, before=message).flatten())[0]
+
+        new_quote = '"' + quote_message.content + '" - ' + quote_message.author.mention
+
     with open(QUOTES_PATH, 'a') as file:
         file.write("\n")
         file.write(new_quote)
 
-    await bot.send("Quote \""+ new_quote + "\" added", message.channel)
+    await bot.send("Quote *"+ new_quote + "* added", message.channel)
 
 
 async def random_quote(message, bot):
