@@ -1,9 +1,23 @@
 import re
 
 
-def stands():
+def _all():
+    temp = []
+    temp.extend(STANDS)
+    temp.extend(STAND)
+    temp.extend(NICU)
+    temp.extend(IM_X)
+    temp.extend(SHOOT_ME)
+    temp.extend(KILL_ME)
+    temp.extend(STAB_ME)
+    temp.extend(NULLPO)
+    temp.extend(CYANIDE)
+    temp.extend(THANKS_BOT)
+    temp.extend(BAD_BOT)
+    return temp
 
-    return [
+
+STANDS = [
         lambda x: re.sub("Star Platinum", "「S t a r   P l a t i n u m」", x, flags=re.IGNORECASE | re.MULTILINE),
         lambda x: re.sub("Magician's Red", "「M a g i c i a n ' s   R e d」", x, flags=re.IGNORECASE | re.MULTILINE),
         lambda x: re.sub("Hermit Purple", "「H e r m i t   P u r p l e」", x, flags=re.IGNORECASE | re.MULTILINE),
@@ -178,52 +192,19 @@ def stands():
                          flags=re.IGNORECASE | re.MULTILINE),
 
     ]
-
-
-def beginning_b():
-    return [
+BEGINNING_B = [
         lambda x: re.sub("^b", "🅱", x, flags=re.IGNORECASE | re.MULTILINE),
         lambda x: re.sub(" b", " 🅱", x, flags=re.IGNORECASE | re.MULTILINE)
     ]
-
-
-def im_x():
-    return [lambda x: re.sub("^.*( |^)i['‘ʼ’]?m (.+)", r"Hi \2, I'm dad!", x, flags=re.I | re.MULTILINE)]
-
-
-def shoot_me():
-    return [lambda x: re.sub("^.*shoot me.*", ":gun:", x, flags=re.I | re.M)]
-
-
-def kill_me():
-    return [lambda x: re.sub("^.*kill me.*", ":gun:", x, flags=re.I | re.M)]
-
-
-def stab_me():
-    return [lambda x: re.sub("^.*stab me.*", ":dagger:", x, flags=re.I | re.M)]
-
-
-def nicu():
-    return [lambda x: re.sub("^.*nicu.*", "nicu nicu\nvery nicu shiza-chan", x, flags=re.I | re.M)]
-
-
-def stand():
-    return [lambda x: re.sub("^.*stand.*", "What, a stand?", x, flags=re.I | re.M)]
-
-
-def nullpo():
-    return [lambda x: re.sub("^.*nullpo.*", "Gah!", x, flags=re.I | re.M)]
-
-
-def cyanide():
-    return [lambda x: re.sub("^.*(cyanide|cyan|cya|see (you|ya)).*", "cyanide :wave:", x, flags=re.I | re.M)]
-
-
-def thanks_bot():
-    return [lambda x: re.sub("^.*thanks bot.*", "<:thumb:595365230666711056>", x, flags=re.I | re.M),
-            lambda x: re.sub("^.*good bot.*", "<:thumb:595365230666711056>", x, flags=re.I | re.M)]
-
-
-def bad_bot():
-    return [lambda x: re.sub("^.*stupid bot.*", "<:aqua:586301642597728263>", x, flags=re.I | re.M),
-            lambda x: re.sub("^.*bad bot.*", "<:aqua:586301642597728263>", x, flags=re.I | re.M)]
+IM_X = [lambda x: re.sub("^.*( |^)i['‘ʼ’]?m (.+)", r"Hi \2, I'm dad!", x, flags=re.I | re.MULTILINE)]
+SHOOT_ME = [lambda x: re.sub("^.*shoot me.*", ":gun:", x, flags=re.I | re.M)]
+KILL_ME = [lambda x: re.sub("^.*kill me.*", ":gun:", x, flags=re.I | re.M)]
+STAB_ME = [lambda x: re.sub("^.*stab me.*", ":dagger:", x, flags=re.I | re.M)]
+NICU = [lambda x: re.sub("^.*nicu.*", "nicu nicu\nvery nicu shiza-chan", x, flags=re.I | re.M)]
+STAND = [lambda x: re.sub("^.*stand.*", "What, a stand?", x, flags=re.I | re.M)]
+NULLPO = [lambda x: re.sub("^.*nullpo.*", "Gah!", x, flags=re.I | re.M)]
+CYANIDE = [lambda x: re.sub("^.*(cyanide|cyan|cya|see (you|ya)).*", "cyanide :wave:", x, flags=re.I | re.M)]
+THANKS_BOT = [lambda x: re.sub("^.*thanks bot.*", "<:thumb:595365230666711056>", x, flags=re.I | re.M),
+              lambda x: re.sub("^.*good bot.*", "<:thumb:595365230666711056>", x, flags=re.I | re.M)]
+BAD_BOT = [lambda x: re.sub("^.*stupid bot.*", "<:aqua:586301642597728263>", x, flags=re.I | re.M),
+           lambda x: re.sub("^.*bad bot.*", "<:aqua:586301642597728263>", x, flags=re.I | re.M)]
