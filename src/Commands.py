@@ -5,6 +5,7 @@ from src import nHentai, UrlHandler, EmbedFactory
 import rule34
 import random
 from jikanpy import Jikan
+import wikipedia
 
 with open('data/config.json') as json_data_file:
     data = json.load(json_data_file)
@@ -359,6 +360,25 @@ async def all_quotes(message, bot):
     await bot.send("Quotes",  message.channel, file=QUOTES_PATH, filename="quotes.txt")
 
 
+def first_wikipedia(message, bot):
+    search_query = " ".join(message.content.split(" ")[1:])
+
+    result = wikipedia.search(search_query)[0]
+    page = wikipedia.page(result)
+
+    title = page.title
+    summary = wikipedia.summary(result, chars=1024)
+    url = page.url
+
+    image_url = None
+    if page.images:
+        image_url = page.images[0]
+
+    embed = EmbedFactory.wikipedia_article(title, summary, url, image_url)
+    
+    bot.send("", message.channel, embed=embed)
+    
+    
 def create_r_bot():
     global r_bot
 
