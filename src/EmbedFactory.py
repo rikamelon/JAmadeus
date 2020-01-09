@@ -193,6 +193,23 @@ def MAL_single_anime(name, url, image_url, synopsis):
     return embed
 
 
+def wikipedia_article(name, summary, url, image_url):
+
+    embed = discord.Embed()
+    embed.colour = 0xd3d3d3
+
+    embed.title = name
+    embed.set_author(name="Link to article", url=url)
+    embed.url = url
+
+    embed.description = summary
+
+    if image_url:
+        embed.set_thumbnail(url=image_url)
+
+    return embed
+
+
 def blank(message):
 
     embed = discord.Embed()
