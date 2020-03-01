@@ -55,11 +55,17 @@ async def get_post(message, bot, multi=False):
 
         elif len(command) == 3:
             try:
+                if int(command[2]) > 1000:
+                    await bot.send("bruh that's way too many", message.channel)
+                    return
                 posts = r_bot.get_posts(command[1], "hot", int(command[2]))
             except ValueError:
                 posts = r_bot.get_posts(command[1], command[2], 1)
 
         elif len(command) == 4:
+            if int(command[2]) > 1000:
+                await bot.send("bruh that's way too many", message.channel)
+                return
             posts = r_bot.get_posts(command[1], command[2], int(command[3]))
 
         else:
