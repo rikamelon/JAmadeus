@@ -20,6 +20,82 @@ FORGOTTEN_IMAGES = {
 
 NON_NSFW_WARNING = "i ain't sending something nsfw in a non nsfw channel"
 
+HELP_MESSAGE = """
+---===--- amadeus documentation ---===---
+
+[arg] denotes a required argument
+<arg> denotes an optional argument
+
+--------- commands ---------
+
+`/stack`
+toggles whether substitutions stack
+ex: `/stack`
+
+`/p [subreddit] <sort_method> <number>`
+gets the number'th post from subreddit with specified sort_method
+default number is 1 and default sort_method is hot
+limit of number is 999
+ex: `/p eyebleach 2`
+
+`/pm [subreddit] <sort_method> <number>`
+gets all posts between 1 and number from subreddit with specified sort_method
+default sort_method is hot
+limit of number is 9
+ex: `/pm eyebleach 9`
+
+`/help`
+sends this command
+ex: `/help`
+
+`/ping`
+get's an ~~incorrect~~ ping
+ex: `/ping`
+
+`/f [name]`
+pulls a forgotten image, or lists forgotten images if `/f list`
+feel free to ping the present phone microwave if you want to add one
+ex: `/f test`
+
+`/search [anime]`
+searches for an anime on MAL
+ex: `/search konosuba`
+
+`/anime [anime]`
+gets the specified anime from mal
+ex: `/anime konosuba`
+
+`/addquote <quote>`
+adds either the last message as a quote or the specified quote
+ex: `/quote "bruh" - @iamawesome99#1435`
+
+`/quote <number>`
+pulls a quote from a list
+if number is unspecified then it pulls a random quote
+ex: `/quote 1`
+
+`/quotes`
+gets all quotes from the list
+ex: `/quotes`
+
+------- NSFW commands ---------
+
+`/r`
+get's a random hentai from nhentai
+ex: `/r`
+
+`/s [search query]`
+searches nhentai for specified search query
+ex: `/s shotacon`
+
+`/34 [tag]`
+pulls a random result for specified tag from rule34.xxx
+ex: `/34 lucina`
+
+`<number>`
+will attempt to pull the relevant nhentai if just a number is present in a message
+ex: `177013`"""
+
 r_bot = None
 r34_bot = None
 
@@ -171,7 +247,7 @@ async def handle_message(message, bot):
 
 
 async def _help(message, bot):
-    bot.send("ask the present phone microwave; past phone microwave is too damn lazy to explain it", message.channel)
+    await bot.send(HELP_MESSAGE, message.channel)
 
 
 async def ping(message, bot):
