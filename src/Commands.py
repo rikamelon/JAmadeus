@@ -30,6 +30,9 @@ async def general(message, bot):
 
     content = message.content
 
+    if message.channel.id in data['blacklist']['channels']:
+        return
+
     for substitution in bot.substitutions:
 
         content = substitution(content)
