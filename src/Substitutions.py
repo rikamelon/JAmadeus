@@ -91,6 +91,7 @@ def _all():
     temp.extend(BAD_BOT)
     return temp
 
+# TODO: make action used.
 
 STANDS = [
     lambda x: re.sub("Star Platinum", "「S t a r   P l a t i n u m」", x, flags=re.IGNORECASE | re.MULTILINE),
