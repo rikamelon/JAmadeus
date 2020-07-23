@@ -270,12 +270,12 @@ async def unknown_command(message, bot):
 
 async def get_nhentai(message, bot):
 
-    try:
+    """try:
         if not message.channel.is_nsfw():
             await bot.send(NON_NSFW_WARNING, message.channel)
             return
     except AttributeError:
-        pass
+        pass"""
 
     gallery = nHentai.Gallery(message.content)
 
@@ -284,12 +284,12 @@ async def get_nhentai(message, bot):
 
 async def random_nhentai(message, bot):
 
-    try:
+    """try:
         if not message.channel.is_nsfw():
             await bot.send(NON_NSFW_WARNING, message.channel)
             return
     except AttributeError:
-        pass
+        pass"""
 
     gallery = nHentai.Gallery(nHentai.random())
 
@@ -298,12 +298,12 @@ async def random_nhentai(message, bot):
 
 async def nhentai_search(message, bot):
 
-    try:
+    """try:
         if not message.channel.is_nsfw():
             await bot.send(NON_NSFW_WARNING, message.channel)
             return
     except AttributeError:
-        pass
+        pass"""
 
     search_query = " ".join(message.content.split(" ")[1:])
     results = nHentai.search(search_query)
@@ -313,12 +313,12 @@ async def nhentai_search(message, bot):
 
 async def rule34_search(message, bot):
 
-    try:
+    """try:
         if not message.channel.is_nsfw():
             await bot.send(NON_NSFW_WARNING, message.channel)
             return
     except AttributeError:
-        pass
+        pass"""
 
     tags = " ".join(message.content.split(" ")[1:])
 
