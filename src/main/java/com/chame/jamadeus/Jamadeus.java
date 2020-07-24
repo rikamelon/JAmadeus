@@ -13,7 +13,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Jamadeus{
-    private static String botToken = "NzM0ODgxMzY0MjA1MjQwNTAy.XxYJmg.U3AN01IRLXktHOYzA1kEuIZdpzA";
+    private static String botToken = "BOT_TOKEN";
 
     public static void main(String[] args) throws Exception {
       new JDABuilder(AccountType.BOT).setToken(botToken).addEventListeners(new Listener()).build();
